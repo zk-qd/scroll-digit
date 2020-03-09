@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/scroll-digit.css">
+</head>
+<style>
+    /* #test {
+        height: 100px;
+    } */
+</style>
+
+<body>
+    <div id='test1'></div>
+    <div id='test2'></div>
+    <div id='test3'></div>
+</body>
+
+
+</html>
+<script src="./js/format-digit.js"></script>
+<script src="./js/scroll-digit.js"></script>
+<script>
+        new ScrollDigit('test1', {
+            number: 123456,
+            isIcon: true,
+        });
+        // new scrollDigit('test2', {
+        //     number: 789456,
+        //     fontSize: '32px',
+        //     height: '100px',
+        // });
+
+        new formatDigit({
+            selector: '#test3',
+            number: 12345678.123456,
+            color: 'red',
+            fontSize: '32px',
+            isComma: true,
+            height: '100px',
+            marginL: '10px',
+            unit: '万人次'
+        });
+</script>

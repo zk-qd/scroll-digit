@@ -1,0 +1,79 @@
+{
+  "id": "1680438",
+  "name": "工整数字",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8822564",
+      "name": "数字1",
+      "font_class": "shuzi",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "8822566",
+      "name": "数字2",
+      "font_class": "shuzi1",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "8822568",
+      "name": "数字3",
+      "font_class": "shuzi2",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "8822572",
+      "name": "数字4",
+      "font_class": "shuzi3",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "8822573",
+      "name": "数字5",
+      "font_class": "shuzi4",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "8822574",
+      "name": "数字6",
+      "font_class": "shuzi5",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "8822578",
+      "name": "数字7",
+      "font_class": "shuzi6",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "8822579",
+      "name": "数字8",
+      "font_class": "shuzi7",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "8822580",
+      "name": "数字9",
+      "font_class": "shuzi8",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "8822581",
+      "name": "数字0",
+      "font_class": "shuzi9",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    }
+  ]
+}

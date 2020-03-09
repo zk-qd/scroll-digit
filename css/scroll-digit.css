@@ -1,0 +1,26 @@
+@import url(../fonts/iconfont.css);
+
+.ScrollDigit {
+    text-align: center;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+}
+.ScrollDigit >.dataOne{
+    float: left;
+}
+.ScrollDigit .dataBoc{
+    overflow: hidden;
+}
+/* 滚动的是tt */
+.ScrollDigit  .tt >span{
+    float: left;
+}
+
+body {
+    margin: 0;
+}
+ul {
+    list-style: none;
+    padding-inline-start: 0;
+}
