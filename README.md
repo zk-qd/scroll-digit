@@ -118,3 +118,5 @@ options = {
 ### v1.0
 1. initial
 
+### v1.1
+1. 修复iconfont的shuzi0
