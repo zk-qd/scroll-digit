@@ -12,7 +12,8 @@ function ScrollDigit(id, options = {}) {
         // 除第一个左边距 作用于格式化数字的 滚动数字无效
         marginL: '0',
     };
-    if (!id || typeof id != 'string' || !(this.ele = document.querySelector('#' + id))) {
+    this.ele = document.querySelector('#' + id);
+    if (!this.ele) {
         throw new TypeError('容器id不存在或非string类型')
     }
 

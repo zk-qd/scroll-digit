@@ -36,9 +36,11 @@ var defaults = {
   fontSize: "30px",
   width: "auto",
   height: "100px",
-  isIcon: false,
   className: "ScrollDigit",
   marginL: "0"
+
+  isIcon: false,
+
 };
 
 // 可配置项
@@ -55,10 +57,11 @@ options = {
   height: "",
   // 除第一个左边距 作用于格式化数字的 滚动数字无效
   marginL: "0",
-  // 是否使用格式化数字
-  isIcon: true,
   //   单位
   unit: "单位"
+
+    // 是否使用格式化数字
+  isIcon: true,
 };
 
 // 正确的使用方式：
@@ -76,13 +79,17 @@ var defaults = {
   fontSize: "30px",
   width: "auto",
   height: "100px",
-  isComma: false,
   marginL: "0"
+
+  isComma: false,
+
 };
 // 可配置项
 options = {
   // 选择器
   selector: "",
+
+  // 下面七个参数和滚动数字参数一样的
   // 默认数字
   number: "",
   // 数字颜色
@@ -93,30 +100,38 @@ options = {
   width: "",
   // i元素以及dataBoc元素的高度 需要注意的是这个高度要和外部元素的高度一致
   height: "",
-  // 是否有小数点
-  isComma: Boolean,
   // 除第一个左边距 作用于格式化数字的 滚动数字无效
   marginL: "0",
   //   单位
-  unit: "单位"
+  unit: "单位",
+
+
+  // 是否有逗号  
+  isComma: Boolean
 };
 ```
 
 # 注意事项
 
-1. 第二个fonts字体图标不行 因为图标的原因数字对不齐
+1. 第二个 fonts 字体图标不行 因为图标的原因数字对不齐
 
-2. 滚动数字不能加小数点以及逗号  所以代码默认把isComma设置为false
+2. 滚动数字不能逗号 所以代码默认把 isComma 设置为 false   ，而小数点如果是小数 那么就会有小数点
+而逗号则是3位正数一个逗号
 
-
+3. 滚动数字和格式化数字有7个参数是相同的
 
 # 待解决问题
-
 
 # Version Iterate
 
 ### v1.0
+
 1. initial
 
 ### v1.1
-1. 修复iconfont的shuzi0
+
+1. 修复 iconfont 的 shuzi0
+
+### v1.2
+1. 字体图标错乱了  导致显示不全
+2. 修改scroll-digit.js 校验id
