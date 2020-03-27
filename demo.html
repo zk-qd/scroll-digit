@@ -25,10 +25,41 @@
 <script src="./js/format-digit.js"></script>
 <script src="./js/scroll-digit.js"></script>
 <script>
+    new ScrollDigit('test1', {
+        number: '1006',
+        isIcon: true,
+        color: 'blue',
+        fontSize: '20px',
+        marginL: '0',
+        height: '30px',
+    });
+    new ScrollDigit('test2', {
+        number: '5006',
+        isIcon: true,
+        color: 'blue',
+        fontSize: '20px',
+        marginL: '0',
+        height: '30px',
+    });
+
+    setInterval(function () {
         new ScrollDigit('test1', {
-            number: 123456,
+            number: '156',
             isIcon: true,
+            color: 'blue',
+            fontSize: '20px',
+            marginL: '0',
+            height: '30px',
         });
+        new ScrollDigit('test2', {
+            number: '126',
+            isIcon: true,
+            color: 'blue',
+            fontSize: '20px',
+            marginL: '0',
+            height: '30px',
+        });
+    }, 1000 * 3)
         // new scrollDigit('test2', {
         //     number: 789456,
         //     fontSize: '32px',
@@ -37,7 +68,7 @@
 
         new formatDigit({
             selector: '#test3',
-            number: 12345678.123456,
+            number: 123456789.0123456,
             color: 'red',
             fontSize: '32px',
             isComma: true,

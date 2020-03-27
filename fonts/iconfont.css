@@ -15,43 +15,43 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-shuzi:before {
+.icon-shuzi0:before {
+  content: "\e618";
+}
+.icon-shuzi1:before {
   content: "\e60f";
 }
 
-.icon-shuzi1:before {
+.icon-shuzi2:before {
   content: "\e610";
 }
 
-.icon-shuzi2:before {
+.icon-shuzi3:before {
   content: "\e611";
 }
 
-.icon-shuzi3:before {
+.icon-shuzi4:before {
   content: "\e612";
 }
 
-.icon-shuzi4:before {
+.icon-shuzi5:before {
   content: "\e613";
 }
 
-.icon-shuzi5:before {
+.icon-shuzi6:before {
   content: "\e614";
 }
 
-.icon-shuzi6:before {
+.icon-shuzi7:before {
   content: "\e615";
 }
 
-.icon-shuzi7:before {
+.icon-shuzi8:before {
   content: "\e616";
 }
 
-.icon-shuzi8:before {
+.icon-shuzi9:before {
   content: "\e617";
 }
 
-.icon-shuzi9:before {
-  content: "\e618";
-}
 
