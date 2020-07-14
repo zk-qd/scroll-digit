@@ -12,11 +12,21 @@
     /* #test {
         height: 100px;
     } */
+    .span {
+        line-height: 100px;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 30px;
+    }
+
+    ul {
+        margin: 0;
+    }
 </style>
 
 <body>
     <div id='test1'></div>
-    <div id='test2'></div>
+    <div id='test2' style="display: inline-block;"></div><span class="span">我相当于一个单位</span>
     <div id='test3'></div>
 </body>
 
@@ -25,28 +35,27 @@
 <script src="./js/format-digit.js"></script>
 <script src="./js/scroll-digit.js"></script>
 <script>
-        new ScrollDigit('test1', {
-            number: 123456,
-            isIcon: true,
-        });
-        new ScrollDigit('test2', {
-            number: 123400056,
-            isIcon: true,
-        });
-        // new scrollDigit('test2', {
-        //     number: 789456,
-        //     fontSize: '32px',
-        //     height: '100px',
-        // });
+    new ScrollDigit('test1', {
+        number: 123456,
+    });
+    new ScrollDigit('test2', {
+        number: 123400056,
+        isIcon: true,
+    });
+    // new scrollDigit('test2', {
+    //     number: 789456,
+    //     fontSize: '32px',
+    //     height: '100px',
+    // });
 
-        new formatDigit({
-            selector: '#test3',
-            number: 12345678.0123456,
-            color: 'red',
-            fontSize: '32px',
-            isComma: true,
-            height: '100px',
-            marginL: '10px',
-            unit: '万人次'
-        });
+    new formatDigit({
+        selector: '#test3',
+        number: 12345678.0123456,
+        color: 'red',
+        fontSize: '32px',
+        isComma: true,
+        height: '100px',
+        marginL: '10px',
+        unit: '万人次'
+    });
 </script>
