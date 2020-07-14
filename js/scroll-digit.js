@@ -11,6 +11,7 @@ function ScrollDigit(id, options = {}) {
         className: 'ScrollDigit',
         // 除第一个左边距 作用于格式化数字的 滚动数字无效
         marginL: '0',
+        isComma: false,
     };
     this.ele = document.querySelector('#' + id);
     if (!this.ele) {
@@ -30,7 +31,6 @@ ScrollDigit.prototype = {
         const that = this.ele;
         const options = this.options;
         const html = [];
-        html.push('<ul class="' + options.className + '">');
         // 滚动数字的个数
         var valLen = (options.number + '').length;
 
@@ -38,10 +38,18 @@ ScrollDigit.prototype = {
         if (!that.querySelector('.' + options.className) || that.querySelectorAll('.dataOne').length != valLen) {
             // 根据数字个数添加几次
             for (var i = 0; i < valLen; i++) {
-                html.push('<li class="dataOne" style="' +
+                if (options.isComma && (i % 3 == 0) && i !== 0) {
+                    html.unshift('<li class="dataOne" style="' +
+                        ';"><div class="dataBoc" style="height:' + options.height + ';line-height:' + options.height +
+                        /* ';width:' + options.width + */ ';color:' + options.color + ';font-size:' + options.fontSize +
+                        ';"><div class="tt" t="10">' +
+                        ' <span class="comma"></span><br />' +
+                        ' </div></div></li>');
+                }
+                html.unshift('<li class="dataOne" style="' +
                     ';"><div class="dataBoc" style="height:' + options.height + ';line-height:' + options.height +
                     ';width:' + options.width + ';color:' + options.color + ';font-size:' + options.fontSize +
-                    ';"><div class="tt" t="10">' +
+                    ';"><div class="tt ttjs" t="10">' +
                     ' <span class="num0"></span><br />' +
                     '   <span class="num1"></span><br />' +
                     '  <span class="num2"></span><br />' +
@@ -64,6 +72,7 @@ ScrollDigit.prototype = {
                     '      <span class="num9"></span><br />' +
                     '     </div></div></li>');
             }
+            html.unshift('<ul class="' + options.className + '">');
             html.push('</ul>');
             // 注意height 和 fontSize的单位要一致
             options.unit && (html.push('<em style="height:' + options.height + ';line-height:' +
@@ -79,7 +88,7 @@ ScrollDigit.prototype = {
         const that = this.ele;
         const options = this.options;
         var numberStr = options.number.toString();
-        var numItems = that.querySelectorAll('.tt');
+        var numItems = that.querySelectorAll('.ttjs');
         [].forEach.call(numItems, item => item.style.transition = 'all 0.5s ease-in-out')
         var h = numItems[0].children[0].offsetHeight;
         var ht = numItems[0].offsetHeight;
@@ -114,6 +123,19 @@ ScrollDigit.prototype = {
                 marginL: options.marginL,
             });
         }
+        // 分号
+        if (options.isComma) {
+            new formatDigit({
+                selector: '#' + id + ' .comma',
+                number: ',',
+                color: options.color,
+                fontSize: options.fontSize,
+                width: options.width,
+                height: options.height,
+                isComma: true,
+                marginL: options.marginL,
+            });
+        }
     },
     Num: function () {
         const options = this.options;
@@ -123,10 +145,26 @@ ScrollDigit.prototype = {
                 item.innerText = i;
             })
         }
+        // 分号
+        if (options.isComma) {
+            document.querySelectorAll('#' + id + ' .comma').forEach(item => {
+                item.innerText = ",";
+            })
+        }
+
     },
 }
 
-
+try {
+    // 是window对象
+    if (this === window) {
+        window.ScrollDigit = ScrollDigit;
+    } else if (module && module.exports) {
+        module.exports = ScrollDigit;
+    }
+} catch {
+    console.log('未知环境')
+}
 
 /*
 使用方式

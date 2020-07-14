@@ -38,7 +38,7 @@ var defaults = {
   height: "100px",
   className: "ScrollDigit",
   marginL: "0"
-
+  isComma: false,
   isIcon: false,
 
 };
@@ -59,7 +59,8 @@ options = {
   marginL: "0",
   //   单位
   unit: "单位"
-
+  // 分隔
+  isComma: true,
     // 是否使用格式化数字
   isIcon: true,
 };
@@ -80,7 +81,6 @@ var defaults = {
   width: "auto",
   height: "100px",
   marginL: "0"
-
   isComma: false,
 
 };
@@ -104,21 +104,34 @@ options = {
   marginL: "0",
   //   单位
   unit: "单位",
-
-
-  // 是否有逗号  
+  // 是否有逗号
   isComma: Boolean
 };
 ```
+
+# 格式化滚动数字的原理
+
+就是将原来的每个数字一个个变成图标数字，
+
+# 功能
+
+### 格式化数字：
+
+1. 可以有小数
+2. 可以有分号
+
+### 滚动数字：
+
+1. 可以有分号，不能有小数
 
 # 注意事项
 
 1. 第二个 fonts 字体图标不行 因为图标的原因数字对不齐
 
-2. 滚动数字不能逗号 所以代码默认把 isComma 设置为 false   ，而小数点如果是小数 那么就会有小数点
-而逗号则是3位正数一个逗号
+2. 滚动数字不能逗号 所以代码默认把 isComma 设置为 false ，而小数点如果是小数 那么就会有小数点
+   而逗号则是 3 位正数一个逗号
 
-3. 滚动数字和格式化数字有7个参数是相同的
+3. 滚动数字和格式化数字有 7 个参数是相同的
 
 # 待解决问题
 
@@ -133,5 +146,10 @@ options = {
 1. 修复 iconfont 的 shuzi0
 
 ### v1.2
-1. 字体图标错乱了  导致显示不全
-2. 修改scroll-digit.js 校验id
+
+1. 字体图标错乱了 导致显示不全
+2. 修改 scroll-digit.js 校验 id
+
+### v1.3
+
+1. 滚动数字新增可以添加分号功能

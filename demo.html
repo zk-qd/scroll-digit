@@ -13,10 +13,10 @@
         height: 100px;
     } */
     .span {
-        line-height: 100px;
+        line-height: 50px;
         display: inline-block;
         vertical-align: top;
-        font-size: 30px;
+        font-size: 25px;
     }
 
     ul {
@@ -37,10 +37,21 @@
 <script>
     new ScrollDigit('test1', {
         number: 123456,
+        isComma: true,
     });
     new ScrollDigit('test2', {
         number: 123400056,
         isIcon: true,
+        isComma: true,
+        // color: "",
+        fontSize: "30px",
+        // 宽度
+        width: "25px",
+        // i元素以及dataBoc元素的高度 需要注意的是这个高度要和外部元素的高度一致
+        height: "50px",
+        // 除第一个左边距 作用于格式化数字的 滚动数字无效
+        marginL: "30px",
+
     });
     // new scrollDigit('test2', {
     //     number: 789456,
