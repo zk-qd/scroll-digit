@@ -1,3 +1,4 @@
+let FormatDigit;
 function ScrollDigit(id, options = {}) {
     // 默认值
     var defaults = {
@@ -112,7 +113,7 @@ ScrollDigit.prototype = {
         const options = this.options;
         const id = this.id;
         for (var i = 0; i < 10; i++) {
-            new formatDigit({
+            new FormatDigit({
                 selector: '#' + id + ' .num' + i,
                 number: i.toString(),
                 color: options.color,
@@ -125,7 +126,7 @@ ScrollDigit.prototype = {
         }
         // 分号
         if (options.isComma) {
-            new formatDigit({
+            new FormatDigit({
                 selector: '#' + id + ' .comma',
                 number: ',',
                 color: options.color,
@@ -159,8 +160,10 @@ try {
     // 是window对象
     if (this === window) {
         window.ScrollDigit = ScrollDigit;
+        FormatDigit = window.FormatDigit;
     } else if (module && module.exports) {
         module.exports = ScrollDigit;
+        FormatDigit = require("./format-digit")
     }
 } catch {
     console.log('未知环境')

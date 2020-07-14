@@ -1,6 +1,6 @@
 
 // 格式化数字  需要改以防和 其他的同名方法冲突
-function formatDigit(config) {
+function FormatDigit(config) {
     this.eles = document.querySelectorAll(config.selector);
     // 默认值
     this.number = config.number || 0;
@@ -24,7 +24,7 @@ function formatDigit(config) {
 };
 
 
-formatDigit.prototype.setValue = function (val) {
+FormatDigit.prototype.setValue = function (val) {
     if (!val) return;
     var str = val.toString(),
         html = '';
@@ -76,9 +76,9 @@ formatDigit.prototype.setValue = function (val) {
 try {
     // 是window对象
     if (this === window) {
-        window.ScrollDigit = formatDigit;
+        window.ScrollDigit = FormatDigit;
     } else if (module && module.exports) {
-        module.exports = formatDigit;
+        module.exports = FormatDigit;
     }
 } catch {
     console.log('未知环境')
