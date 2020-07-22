@@ -73,10 +73,12 @@ FormatDigit.prototype.setValue = function (val) {
         v.querySelectorAll('i')[0].style.marginLeft = 0;
     }
 }
+
+
 try {
     // 是window对象
-    if (this === window) {
-        window.ScrollDigit = FormatDigit;
+    if (globalThis === window) {
+        window.FormatDigit = FormatDigit;
     } else if (module && module.exports) {
         module.exports = FormatDigit;
     }

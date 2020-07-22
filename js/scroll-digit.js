@@ -1,4 +1,4 @@
-let FormatDigit;
+var FormatDigit;
 function ScrollDigit(id, options = {}) {
     // 默认值
     var defaults = {
@@ -155,10 +155,17 @@ ScrollDigit.prototype = {
 
     },
 }
+ScrollDigit.colors = {
+    red: "#DC7060",
+    green: "#08A336",
+    blue: "#5DADF7",
+    yellow: "#F7EA4B",
+    grey: "#E6A23C",
+}
 
 try {
     // 是window对象
-    if (this === window) {
+    if (globalThis === window) {
         window.ScrollDigit = ScrollDigit;
         FormatDigit = window.FormatDigit;
     } else if (module && module.exports) {
