@@ -16,7 +16,8 @@ function ScrollDigit(id, options = {}) {
     };
     this.ele = document.querySelector('#' + id);
     if (!this.ele) {
-        throw new TypeError('容器id不存在或非string类型')
+        // throw new TypeError('容器id不存在或非string类型')
+        return console.log('滚动插件','传入的id获取不到容器');
     }
 
     this.options = Object.assign(defaults, options);
@@ -32,46 +33,67 @@ ScrollDigit.prototype = {
         const that = this.ele;
         const options = this.options;
         const html = [];
-        // 滚动数字的个数
-        var valLen = (options.number + '').length;
-
-        // 如果没有添加这个元素 或者长度不够 那么重新创建
-        if (!that.querySelector('.' + options.className) || that.querySelectorAll('.dataOne').length != valLen) {
+        const str = options.number + ''
+        // 获取不包含分号的长度
+        var valLen = str.length;
+        // 获取整数的长度
+        const integer = str.search(/\./g) == -1 ? str.length : str.search(/\./g);
+        // 获取小数 加上点 的长度
+        const floatDot = valLen - integer;
+        // 如果没有添加这个元素 或者长度不够 那么重新创建  
+        if (!that.querySelector('.' + options.className) ||
+            that.querySelectorAll('.dataOne').length/* 总长度 数字 + 小数点 + 分号  */ != getTotalLenght()) {
             // 根据数字个数添加几次
             for (var i = 0; i < valLen; i++) {
-                if (options.isComma && (i % 3 == 0) && i !== 0) {
+                // 分号 comma
+                if (options.isComma && ((i - floatDot) % 3 == 0) && i - floatDot > 0) {
                     html.unshift('<li class="dataOne" style="' +
                         ';"><div class="dataBoc" style="height:' + options.height + ';line-height:' + options.height +
-                        /* ';width:' + options.width + */ ';color:' + options.color + ';font-size:' + options.fontSize +
+                        /* ';width:' + options.width + */ ';color:' + options.color + ';font-size:' + (parseInt(options.fontSize) + parseInt(options.fontSize) * 1 / 5) +
+                        'px' + /* ';margin-left: ' + options.marginL + */
                         ';"><div class="tt" t="10">' +
                         ' <span class="comma"></span><br />' +
                         ' </div></div></li>');
                 }
-                html.unshift('<li class="dataOne" style="' +
-                    ';"><div class="dataBoc" style="height:' + options.height + ';line-height:' + options.height +
-                    ';width:' + options.width + ';color:' + options.color + ';font-size:' + options.fontSize +
-                    ';"><div class="tt ttjs" t="10">' +
-                    ' <span class="num0"></span><br />' +
-                    '   <span class="num1"></span><br />' +
-                    '  <span class="num2"></span><br />' +
-                    '    <span class="num3"></span><br />' +
-                    '    <span class="num4"></span><br />' +
-                    '    <span class="num5"></span><br />' +
-                    '   <span class="num6"></span><br />' +
-                    '    <span class="num7"></span><br />' +
-                    '    <span class="num8"></span><br />' +
-                    '      <span class="num9"></span><br />' +
-                    ' <span class="num0"></span><br />' +
-                    '   <span class="num1"></span><br />' +
-                    '  <span class="num2"></span><br />' +
-                    '    <span class="num3"></span><br />' +
-                    '    <span class="num4"></span><br />' +
-                    '    <span class="num5"></span><br />' +
-                    '   <span class="num6"></span><br />' +
-                    '    <span class="num7"></span><br />' +
-                    '    <span class="num8"></span><br />' +
-                    '      <span class="num9"></span><br />' +
-                    '     </div></div></li>');
+                // 不是小数点就是数字
+                if (i !== floatDot - 1) {
+                    html.unshift('<li class="dataOne" style="' +
+                        ';"><div class="dataBoc" style="height:' + options.height + ';line-height:' + options.height +
+                        ';width:' + options.width + ';color:' + options.color + ';font-size:' + options.fontSize +
+                        ';margin-left: ' + options.marginL +
+                        ';"><div class="tt ttroll" t="10">' +
+                        ' <span class="num0"></span><br />' +
+                        '   <span class="num1"></span><br />' +
+                        '  <span class="num2"></span><br />' +
+                        '    <span class="num3"></span><br />' +
+                        '    <span class="num4"></span><br />' +
+                        '    <span class="num5"></span><br />' +
+                        '   <span class="num6"></span><br />' +
+                        '    <span class="num7"></span><br />' +
+                        '    <span class="num8"></span><br />' +
+                        '      <span class="num9"></span><br />' +
+                        ' <span class="num0"></span><br />' +
+                        '   <span class="num1"></span><br />' +
+                        '  <span class="num2"></span><br />' +
+                        '    <span class="num3"></span><br />' +
+                        '    <span class="num4"></span><br />' +
+                        '    <span class="num5"></span><br />' +
+                        '   <span class="num6"></span><br />' +
+                        '    <span class="num7"></span><br />' +
+                        '    <span class="num8"></span><br />' +
+                        '      <span class="num9"></span><br />' +
+                        '     </div></div></li>');
+                } else {
+                    // 小数点 dot
+                    html.unshift('<li class="dataOne" style="' +
+                        ';"><div class="dataBoc" style="height:' + options.height + ';line-height:' + options.height +
+                        /* ';width:' + options.width + */ ';color:' + options.color + ';font-size:' + (parseInt(options.fontSize) + parseInt(options.fontSize) * 1 / 5) +
+                        'px' + /* ';margin-left: ' + options.marginL + */
+                        ';"><div class="tt" t="10">' +
+                        ' <span class="dot"></span><br />' +
+                        ' </div></div></li>');
+                }
+
             }
             html.unshift('<ul class="' + options.className + '">');
             html.push('</ul>');
@@ -83,17 +105,25 @@ ScrollDigit.prototype = {
                 ';vertical-align: baseline;display: inline-block;">' + options.unit + '</em>'));
             that.innerHTML = html.join('').trim();
         }
+
+        function getTotalLenght() {
+            // 分号的长度
+            let comma = Math.ceil((integer / 3) - 1);
+            return valLen + comma;
+        }
     },
 
     scroNum: function () {
         const that = this.ele;
         const options = this.options;
-        var numberStr = options.number.toString();
-        var numItems = that.querySelectorAll('.ttjs');
+        // 需要所有数字滚动  小数点和分隔号不滚动 那么在这里去除小数点
+        var numberStr = options.number.toString().replace('.', '');
+        var numItems = that.querySelectorAll('.ttroll');
         [].forEach.call(numItems, item => item.style.transition = 'all 0.5s ease-in-out')
-        var h = numItems[0].children[0].offsetHeight;
-        var ht = numItems[0].offsetHeight;
-
+        var h = Math.ceil(numItems[0].children[0].offsetHeight);
+        // var ht = Math.ceil(numItems[0].offsetHeight);
+        // 解决滚动数字对不齐的问题
+        var ht = h * 20;
         // if (numberStr.length <= numItems.length - 1) {
         //     var tempStr = '';
         //     for (var a = 0; a < numItems.length - numberStr.length; a++) {
@@ -105,7 +135,7 @@ ScrollDigit.prototype = {
         var numberArr = numberStr.split('');
         [...numItems].forEach(function (item, i) {
             setTimeout(function () {
-                item.style.transform = 'translateY(' + ((-parseInt(numberArr[i]) * h - h * 10) / parseInt(ht) * 100) + '%' + ')';
+                item.style.transform = 'translateY(' + ((-Number(numberArr[i]) * h - h * 10) / Number(ht) * 100) + '%' + ')';
             }, i * 20)
         });
     },
@@ -121,7 +151,8 @@ ScrollDigit.prototype = {
                 width: options.width,
                 height: options.height,
                 isComma: false,
-                marginL: options.marginL,
+                // marginL: options.marginL,
+                isIcon: options.isIcon,
             });
         }
         // 分号
@@ -134,9 +165,21 @@ ScrollDigit.prototype = {
                 width: options.width,
                 height: options.height,
                 isComma: true,
-                marginL: options.marginL,
+                isIcon: options.isIcon,
+                // marginL: options.marginL,
             });
         }
+        new FormatDigit({
+            selector: '#' + id + ' .dot',
+            number: '.',
+            color: options.color,
+            fontSize: options.fontSize,
+            width: options.width,
+            height: options.height,
+            isComma: false,
+            isIcon: options.isIcon,
+            // marginL: options.marginL,
+        });
     },
     Num: function () {
         const options = this.options;
@@ -152,15 +195,21 @@ ScrollDigit.prototype = {
                 item.innerText = ",";
             })
         }
+        // 小数点
+        document.querySelectorAll('#' + id + ' .dot').forEach(item => {
+            item.innerText = ".";
+        })
 
     },
 }
 ScrollDigit.colors = {
     red: "#DC7060",
     green: "#08A336",
-    blue: "#5DADF7",
     yellow: "#F7EA4B",
     grey: "#E6A23C",
+    blue: "#5DADF7",
+    orange: "#FBA63C",
+    white: "white",
 }
 
 try {
